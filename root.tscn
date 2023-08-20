@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxyxylrcm2p18"]
+
+[ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="1_tgher"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_lbs43"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvrmu"]
+size = Vector2(45.9, 61.2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mc823"]
+radius = 58.02
+
+[node name="Root" type="Node"]
+
+[node name="SceneManager" type="Node" parent="."]
+
+[node name="CurrentScene" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CurrentScene"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="CurrentScene"]
+script = ExtResource("2_lbs43")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_wvrmu")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite" type="Sprite2D" parent="CurrentScene/CharacterBody2D"]
+scale = Vector2(0.101157, 0.101995)
+texture = ExtResource("1_tgher")
+
+[node name="Area2D" type="Area2D" parent="CurrentScene/CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_mc823")
