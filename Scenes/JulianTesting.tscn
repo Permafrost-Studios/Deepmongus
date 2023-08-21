@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://cguhp2yod4aif"]
+[gd_scene load_steps=7 format=3 uid="uid://cguhp2yod4aif"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_77fcw"]
+[ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
+[ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="3_eesed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1sa"]
+size = Vector2(45.9, 61.2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sromt"]
+radius = 58.02
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjjmw"]
 
 [node name="JulianTesting" type="Node"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 2
+script = ExtResource("1_77fcw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_ge1sa")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.101157, 0.101995)
+texture = ExtResource("2_56r47")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_sromt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_vjjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(35.5, 121.526)
+scale = Vector2(0.316333, -0.0469934)
+texture = ExtResource("3_eesed")

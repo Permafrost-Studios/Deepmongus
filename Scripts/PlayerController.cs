@@ -14,7 +14,7 @@ public partial class PlayerController : CharacterBody2D
 
 	bool isJumping = false;
 
-	bool facingRight = true; //Make sure he is facing right by default
+	bool facingRight = false; //Make sure he is facing right by default
 
 	float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
