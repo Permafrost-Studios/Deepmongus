@@ -19,6 +19,8 @@ public partial class WorldManager : GenericSingleton<Node> {
     /*-------------------------------------------------------------------------
                             SIGNAL HANDLERS
     -------------------------------------------------------------------------*/
+    public void ChangeLevelHandler() {
+    } // each level should have a trigger box to signify their ID
 
     
 
