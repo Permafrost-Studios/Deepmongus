@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxyxylrcm2p18"]
+[gd_scene load_steps=6 format=3 uid="uid://cxyxylrcm2p18"]
 
+[ext_resource type="Script" path="res://CurrentScene.cs" id="1_jarlb"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="1_tgher"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_lbs43"]
 
@@ -14,6 +15,7 @@ radius = 58.02
 [node name="SceneManager" type="Node" parent="."]
 
 [node name="CurrentScene" type="Node" parent="."]
+script = ExtResource("1_jarlb")
 
 [node name="Camera2D" type="Camera2D" parent="CurrentScene"]
 
