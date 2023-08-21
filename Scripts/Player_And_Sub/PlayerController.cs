@@ -1,10 +1,6 @@
 using Godot;
 using System;
 
-public enum resourceType {
-
-}
-
 public partial class PlayerController : CharacterBody2D
 {
 	[Export] float moveSpeed = 300f;
