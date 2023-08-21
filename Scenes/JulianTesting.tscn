@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cguhp2yod4aif"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_77fcw"]
+[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="1_77fcw"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
 [ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="3_eesed"]
 
