@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+public enum resourceType {
+
+}
+
 public partial class PlayerController : CharacterBody2D
 {
 	[Export] float moveSpeed = 100f;
@@ -14,17 +18,11 @@ public partial class PlayerController : CharacterBody2D
 
 	float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
+	Vector2 newVel;
+
 	public override void _PhysicsProcess(double delta) 
 	{
-		Vector2 velocity = this.Velocity;
-
-		//Jumping behaviour
-		if(Input.IsActionJustPressed("Jump")  && this.IsOnFloor())
-		{
-			isJumping = true;
-			remainingJumpTime = jumpTime;
-			velocity.Y = -jumpSpeed; //Positive direction is downwards
-		} 
+		newVel = this.Velocity;
 
 		if (isJumping) 
 		{
@@ -37,21 +35,23 @@ public partial class PlayerController : CharacterBody2D
 		}
 		else 
 		{
-			velocity.Y += Gravity * (float)delta;
+			newVel.Y += Gravity * (float)delta;
 		}
 
 		float horizontalInput = Input.GetAxis("Left", "Right");
-		velocity.X = (facingRight ? 1 : -1) * moveSpeed;
+		newVel.X = (facingRight ? 1 : -1) * moveSpeed;
 
-		this.Velocity = velocity;
+		this.Velocity = newVel;
 		this.MoveAndSlide();
 	}
 
 	public override void _Input(InputEvent @event) 
 	{
-		// if(@event.IsActionPressed("Jump"))
-		// {
-
-		// }
+		if(@event.IsActionPressed("Jump"))
+		{
+			isJumping = true;
+			remainingJumpTime = jumpTime;
+			newVel.Y = -jumpSpeed; //Positive direction is downwards
+		}
 	}
 }
