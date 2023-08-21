@@ -1,0 +1,12 @@
+#  CSharp formatting rules:
+[*.cs]
+csharp_new_line_before_open_brace = none # K&R 💜
+csharp_new_line_before_else = false
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
+csharp_new_line_between_query_expression_clauses = true
+
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+csharp_indent_labels = flush_left # not so sure ab this
+csharp_indent_block_contents = true
