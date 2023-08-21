@@ -2,9 +2,9 @@ using Godot;
 using System;
 using System.Runtime.InteropServices;
 
-public partial class WorldManager : GenericSingleton<Node> {
+public partial class EnemyManager : GenericSingleton<Node> {
     public override void _EnterTree() {
-        base._EnterTree();
+        this.Name = "EnemyManager";
     }
 
     public override void _Ready() {
@@ -15,10 +15,24 @@ public partial class WorldManager : GenericSingleton<Node> {
         
     }
 
+
+    /*-------------------------------------------------------------------------
+                            SIGNAL HANDLERS
+    -------------------------------------------------------------------------*/
+
+
+    
+
+
+
+
+
+
     public struct GameStatus { // Should contain enough data that we can save and load the game
         // an instance of a ResourceInfo struct from Jaden
         public int worldSeed;
-        public int a;
+        public int playerCurrLayer;
+        public double playerLayerTime;
     }
 
 
