@@ -23,7 +23,7 @@ public partial class PlayerController : CharacterBody2D
 		{
 			isJumping = true;
 			remainingJumpTime = jumpTime;
-			velocity.Y = -jumpSpeed;
+			velocity.Y = -jumpSpeed; //Positive direction is downwards
 		} 
 
 		if (isJumping) 
