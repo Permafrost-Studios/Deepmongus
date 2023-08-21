@@ -6,7 +6,7 @@ public class ResourceManager : Node {
 	int torpedoes;
 	int batteries;
 
-	private void _on_area_2d_body_entered(Node2D body) {
+	private void _process(Node2D body) {
 
 		switch( (node.GetParent() as Resource).type ) {
 
