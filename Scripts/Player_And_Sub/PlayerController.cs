@@ -52,6 +52,13 @@ public partial class PlayerController : CharacterBody2D
 				isJumping = false;
 				remainingJumpTime = jumpTime;
 			}
+
+			if (this.IsOnCeiling()) 
+			{
+				isJumping = false;
+
+				GD.Print("stopped jumping");
+			}
 		}
 		else 
 		{

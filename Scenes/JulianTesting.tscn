@@ -17,6 +17,7 @@ size = Vector2(32.3594, 23.5465)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(554, 436)
 collision_mask = 2
+slide_on_ceiling = false
 script = ExtResource("1_77fcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -38,6 +39,38 @@ scale = Vector2(29.16, 3.44)
 shape = SubResource("RectangleShape2D_vjjmw")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(35.5, 121.526)
+scale = Vector2(0.316333, -0.0469934)
+texture = ExtResource("3_eesed")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(283, 314)
+scale = Vector2(0.36679, 0.857903)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_mgcw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(38.2, 118.5)
+scale = Vector2(29.16, 3.44)
+shape = SubResource("RectangleShape2D_vjjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(35.5, 121.526)
+scale = Vector2(0.316333, -0.0469934)
+texture = ExtResource("3_eesed")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(859, 221)
+scale = Vector2(0.36679, 0.857903)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_mgcw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(38.2, 118.5)
+scale = Vector2(29.16, 3.44)
+shape = SubResource("RectangleShape2D_vjjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
 position = Vector2(35.5, 121.526)
 scale = Vector2(0.316333, -0.0469934)
 texture = ExtResource("3_eesed")
