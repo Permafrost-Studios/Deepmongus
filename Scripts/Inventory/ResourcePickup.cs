@@ -7,7 +7,7 @@ public class ResourcePickup : Node {
     // BRUH I HAVEN'T DONE ANYTHING HERE
 
 
-    void 
+    // void add () {}
 
     // .GetParentAsResource.
 

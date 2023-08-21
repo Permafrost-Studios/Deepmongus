@@ -8,14 +8,14 @@ public class ResourceManager : Node {
 
     void UpdateResource(Node2D node) {
 
-        Switch((node.GetParent() as Resource).type) {
+        switch( (node.GetParent() as Resource).type ) {
 
             case 0:
 
                 if ( fuelCans < 2 ) {
 
                     fuelCans++;
-                    node.queue_free();
+                    node.QueueFree();
 
                 }
 
@@ -26,7 +26,7 @@ public class ResourceManager : Node {
                 if ( torpedoes < 4 ) {
 
                     torpedoes++;
-                    node.queue_free();
+                    node.QueueFree();
 
                 }
 
@@ -37,7 +37,7 @@ public class ResourceManager : Node {
                 if ( batteries < 2 ) {
 
                     batteries++;
-                    node.queue_free();
+                    node.QueueFree();
 
                 }            
 
