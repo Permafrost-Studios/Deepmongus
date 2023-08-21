@@ -2,7 +2,8 @@ using Godot;
 using System;
 using System.Runtime.InteropServices;
 
-public partial class WorldManager : GenericSingleton<Node> {
+public partial class WorldManager : GenericSingleton<WorldManager> {
+
     public override void _EnterTree() {
         this.Name = "WorldManager";
     }
@@ -12,7 +13,16 @@ public partial class WorldManager : GenericSingleton<Node> {
     }
 
     public override void _Process(double delta) {
+        DoLevelCalculations(delta);
+    }
+
+
+    private void DoLevelCalculations(double delta) {
         
+    }
+
+    public void PrintThing() {
+        GD.Print("print success");
     }
 
 

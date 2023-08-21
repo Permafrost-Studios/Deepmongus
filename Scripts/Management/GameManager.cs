@@ -19,6 +19,7 @@ public partial class GameManager : GenericSingleton<Node> {
 
 
 
+
     Stack sceneQueue = new Stack();
 
 	// Adds a new scene, it becomes the new actual
