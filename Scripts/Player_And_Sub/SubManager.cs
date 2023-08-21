@@ -30,7 +30,7 @@ public partial class SubManager : GenericSingleton<Node>
         currentFuel = Math.Clamp(currentCharge, -1, maxFuel);
     }
 
-    public void AddCharge(float amt)
+    public void AddCharge(float amt) //This will be called with a negative value to remove charge from the machine usage
     {
         currentCharge += amt;
 
