@@ -14,12 +14,6 @@ public partial class PlayerController : CharacterBody2D
 
 	float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		timeSinceLastJump = 0;
-	}
-
 	public override void _PhysicsProcess(double delta) 
 	{
 		Vector2 velocity = this.Velocity;
@@ -45,8 +39,6 @@ public partial class PlayerController : CharacterBody2D
 		{
 			velocity.Y += Gravity * (float)delta;
 		}
-
-		timeSinceLastJump += (float)delta;
 
 		float horizontalInput = Input.GetAxis("Left", "Right");
 		velocity.X = (facingRight ? 1 : -1) * moveSpeed;
