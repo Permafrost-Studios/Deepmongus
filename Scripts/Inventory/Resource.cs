@@ -10,6 +10,6 @@ public class Resource : Node {
 
     }
 
-    [Export] int type;
+    [Export] public int type;
 
 } // LOOOOOOOOOOOL I FORGOT HOW TO DO IT

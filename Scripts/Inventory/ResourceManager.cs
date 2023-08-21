@@ -2,49 +2,49 @@ using Godot;
 
 public class ResourceManager : Node {
 
-    int fuelCans;
-    int torpedoes;
-    int batteries;
+	int fuelCans;
+	int torpedoes;
+	int batteries;
 
-    void UpdateResource(Node2D node) {
+	private void _process(Node2D body) {
 
-        switch( (node.GetParent() as Resource).type ) {
+		switch( (node.GetParent() as Resource).type ) {
 
-            case 0:
+			case 0:
 
-                if ( fuelCans < 2 ) {
+				if ( fuelCans < 2 ) {
 
-                    fuelCans++;
-                    node.QueueFree();
+					fuelCans++;
+					node.QueueFree();
 
-                }
+				}
 
-                break;
+				break;
 
-            case 1:
+			case 1:
 
-                if ( torpedoes < 4 ) {
+				if ( torpedoes < 4 ) {
 
-                    torpedoes++;
-                    node.QueueFree();
+					torpedoes++;
+					node.QueueFree();
 
-                }
+				}
 
-                break;
+				break;
 
-            case 2:
+			case 2:
 
-                if ( batteries < 2 ) {
+				if ( batteries < 2 ) {
 
-                    batteries++;
-                    node.QueueFree();
+					batteries++;
+					node.QueueFree();
 
-                }            
+				}            
 
-                break;
+				break;
 
-        }
+		}
 
-    }
+	}
 
 }
