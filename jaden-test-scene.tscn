@@ -1,15 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfljs4ha7g1gt"]
+[gd_scene load_steps=11 format=3 uid="uid://cfljs4ha7g1gt"]
 
 [ext_resource type="Script" path="res://CurrentScene.cs" id="1_5tjid"]
-[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="2_ogmkj"]
+[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="2_ogmkj"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="3_a0n4m"]
-[ext_resource type="Script" path="res://Scripts/Inventory/ResourceManager.cs" id="4_61va2"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ResourcePickup.cs" id="4_p2fif"]
+[ext_resource type="Script" path="res://Scripts/Inventory/SubResource.cs" id="5_64iuw"]
+[ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="6_1c6v3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvrmu"]
 size = Vector2(45.9, 61.2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mc823"]
 radius = 58.02
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8qir"]
+size = Vector2(36, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guftu"]
+size = Vector2(1308, 390)
 
 [node name="Root" type="Node"]
 
@@ -32,12 +40,30 @@ scale = Vector2(0.101157, 0.101995)
 texture = ExtResource("3_a0n4m")
 
 [node name="Area2D" type="Area2D" parent="CurrentScene/CharacterBody2D"]
+collision_mask = 8
+script = ExtResource("4_p2fif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/CharacterBody2D/Area2D"]
 shape = SubResource("CircleShape2D_mc823")
 
-[node name="Node2D" type="Node2D" parent="CurrentScene"]
+[node name="Pickup" type="Area2D" parent="CurrentScene"]
 position = Vector2(118, 37)
-script = ExtResource("4_61va2")
+collision_layer = 8
+script = ExtResource("5_64iuw")
 
-[connection signal="body_entered" from="CurrentScene/CharacterBody2D/Area2D" to="CurrentScene/Node2D" method="_on_area_2d_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="CurrentScene/Pickup"]
+scale = Vector2(0.0119048, 0.0119048)
+texture = ExtResource("6_1c6v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/Pickup"]
+shape = SubResource("RectangleShape2D_m8qir")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CurrentScene"]
+position = Vector2(-4, 282)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/StaticBody2D"]
+shape = SubResource("RectangleShape2D_guftu")
+
+[node name="Sprite2D" type="Sprite2D" parent="CurrentScene/StaticBody2D"]
+scale = Vector2(0.435333, 0.229762)
+texture = ExtResource("6_1c6v3")

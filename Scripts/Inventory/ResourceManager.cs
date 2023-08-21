@@ -1,14 +1,14 @@
 using Godot;
 
-public class ResourceManager : Node {
+public partial class ResourceManager : GenericSingleton<Node> {
 
 	int fuelCans;
 	int torpedoes;
 	int batteries;
 
-	private void _process(Node2D node) {
+	public void UpdateResource(Area2D node) {
 
-		switch( (node.GetParent() as Resource).type ) {
+		switch( (node as SubResource).type ) {
 
 			case 0:
 
@@ -38,7 +38,7 @@ public class ResourceManager : Node {
 
 					batteries++;
 					node.QueueFree();
-
+					
 				}            
 
 				break;
