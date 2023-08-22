@@ -6,8 +6,8 @@ public partial class PlayerStateManager : CharacterBody2D
     public float horizontalInput;
     public float verticalInput;
 
-    PlayerSubmarineState submState;
-    PlayerBodyState bodyState;
+    PlayerSubmarineState submState = new PlayerSubmarineState();
+    PlayerBodyState bodyState = new PlayerBodyState();
 
     public PlayerState currentState;
 
@@ -15,7 +15,7 @@ public partial class PlayerStateManager : CharacterBody2D
 
     public override void _Ready() 
     {
-
+        currentState = submState;
     }
 
     public override void _Process(double delta) 

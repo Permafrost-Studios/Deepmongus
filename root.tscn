@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://CurrentScene.cs" id="1_jarlb"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="1_tgher"]
-[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="2_lbs43"]
+[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerStateManager.cs" id="2_22rrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvrmu"]
 size = Vector2(45.9, 61.2)
@@ -20,7 +20,7 @@ script = ExtResource("1_jarlb")
 [node name="Camera2D" type="Camera2D" parent="CurrentScene"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="CurrentScene"]
-script = ExtResource("2_lbs43")
+script = ExtResource("2_22rrg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_wvrmu")
