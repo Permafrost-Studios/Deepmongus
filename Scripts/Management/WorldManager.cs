@@ -17,7 +17,6 @@ public partial class WorldManager : NodeSingleton<WorldManager> {
 
 
     private void DoLevelCalculations(double delta) {
-        
     }
 
     public void PrintThing() {
