@@ -2,7 +2,18 @@ using Godot;
 using System;
 using System.Collections;
 
-public partial class GameManager : GenericSingleton<Node> {
+public partial class GameManager : NodeSingleton<GameManager> {
+
+    Stack sceneQueue = new Stack();
+		public enum EndCause {
+			WentUpLayer,
+			NoMoreFuel,
+			DiedToEnemy,
+
+			Win
+		}
+
+
     public override void _EnterTree() {
         this.Name = "GameManager";
 
@@ -16,11 +27,24 @@ public partial class GameManager : GenericSingleton<Node> {
     public void ChangeSceneHandler() {
     } // each level should have a trigger box to signify their ID
 
+		public void PlayEndSceneHandler(EndCause cause) {
+			switch (cause) {
+				case EndCause.DiedToEnemy:
+					// TODO: Switch to some cutscene or smth
+					break;
+				case EndCause.WentUpLayer:
+					break;
+				case EndCause.NoMoreFuel:
+					break;
+				case EndCause.Win:
+					break;
+				default:
+					break;
+			}
+		}
 
 
 
-
-    Stack sceneQueue = new Stack();
 
 	// Adds a new scene, it becomes the new actual
 	public void AddNewSceneActual(string path) {
