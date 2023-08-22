@@ -36,6 +36,11 @@ public partial class PlayerStateManager : CharacterBody2D
     public override void _Input(InputEvent @event) 
 	{
         currentState.Input(this, @event.AsText());
+
+        if(Input.IsActionJustPressed("Jump") && this.IsOnFloor())
+		{
+
+        }
     }
 
     public void SwitchState(PlayerState newState) 

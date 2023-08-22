@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SubManager : GenericSingleton<Node> 
+public partial class SubManager : NodeSingleton<SubManager> 
 {
     float maxFuel;
     float currentFuel;

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class ResourceManager : GenericSingleton<Node> {
+public partial class ResourceManager : NodeSingleton<ResourceManager> {
 
 	int fuelCans;
 	int torpedoes;
