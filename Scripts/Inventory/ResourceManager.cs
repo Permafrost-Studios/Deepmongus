@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class ResourceManager : NodeSingleton<ResourceManager> {
 
@@ -7,6 +8,10 @@ public partial class ResourceManager : NodeSingleton<ResourceManager> {
 	int batteries;
 
 	public void UpdateResource(Area2D node) {
+
+		GD.Print(fuelCans);
+		GD.Print(torpedoes);
+		GD.Print(batteries);
 
 		switch( (node as SubResource).type ) {
 
@@ -44,6 +49,10 @@ public partial class ResourceManager : NodeSingleton<ResourceManager> {
 				break;
 
 		}
+
+		GD.Print(fuelCans);
+		GD.Print(torpedoes);
+		GD.Print(batteries);
 
 	}
 

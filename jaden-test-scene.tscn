@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfljs4ha7g1gt"]
+[gd_scene load_steps=10 format=3 uid="uid://cfljs4ha7g1gt"]
 
-[ext_resource type="Script" path="res://CurrentScene.cs" id="1_5tjid"]
 [ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="2_ogmkj"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="3_a0n4m"]
 [ext_resource type="Script" path="res://Scripts/Inventory/ResourcePickup.cs" id="4_p2fif"]
@@ -24,7 +23,6 @@ size = Vector2(1308, 390)
 [node name="SceneManager" type="Node" parent="."]
 
 [node name="CurrentScene" type="Node" parent="."]
-script = ExtResource("1_5tjid")
 
 [node name="Camera2D" type="Camera2D" parent="CurrentScene"]
 
@@ -49,6 +47,7 @@ shape = SubResource("CircleShape2D_mc823")
 [node name="Pickup" type="Area2D" parent="CurrentScene"]
 position = Vector2(118, 37)
 collision_layer = 8
+collision_mask = 0
 script = ExtResource("5_64iuw")
 
 [node name="Sprite2D" type="Sprite2D" parent="CurrentScene/Pickup"]
