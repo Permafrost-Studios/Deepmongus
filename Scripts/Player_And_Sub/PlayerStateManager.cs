@@ -17,6 +17,7 @@ public partial class PlayerStateManager : CharacterBody2D
     public override void _Ready() 
     {
         currentState = submState;
+        currentState.Enter(this);
     }
 
     public override void _Process(double delta) 

@@ -75,7 +75,7 @@ public class PlayerBodyState : PlayerState
 
     public override void Input(PlayerStateManager stateMgr, InputEvent @event)
     {
-        if(@event.IsAction("Jump") && stateMgr.IsOnFloor())
+        if(@event.IsActionPressed("Jump") && stateMgr.IsOnFloor())
 		{
             InitiateJump();
 		}

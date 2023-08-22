@@ -14,7 +14,7 @@ size = Vector2(32.3594, 23.5465)
 
 [node name="JulianTesting" type="Node"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(554, 436)
 scale = Vector2(1, 1.01345)
 collision_mask = 2
@@ -22,11 +22,15 @@ slide_on_ceiling = false
 platform_floor_layers = 4294901762
 script = ExtResource("1_nkel7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="ShootPoint" type="Node2D" parent="Player"]
+position = Vector2(29, -27.6284)
+scale = Vector2(-1.59128, 1921.26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_ge1sa")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Sprite" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite" type="Sprite2D" parent="Player"]
 scale = Vector2(0.101157, 0.101995)
 texture = ExtResource("2_56r47")
 

@@ -10,10 +10,13 @@ public class PlayerSubmarineState : PlayerState
 
     float fuelDepletionRate;
 
-    Node shootPoint; // Use get child or something
-    PackedScene Bullet = (PackedScene)GD.Load("res://bullet.tscn");
+    Node2D shootPoint; // Use get child or something
+    PackedScene Bullet = (PackedScene)GD.Load("res://Prefabs/missile.tscn");
 
-    public override void Enter(PlayerStateManager stateMgr) {}
+    public override void Enter(PlayerStateManager stateMgr) 
+    {
+        shootPoint = (Node2D)stateMgr.GetChild(0);
+    }
     
     public override void Update(PlayerStateManager stateMgr, double delta)
     {
@@ -33,13 +36,20 @@ public class PlayerSubmarineState : PlayerState
 
     public override void Input(PlayerStateManager stateMgr, InputEvent @event)
     {
-        
+        if(@event.IsActionPressed("Shoot"))
+		{
+            GD.Print("Shot fired");
+            Shoot(stateMgr.GetNode("/root"));
+        }
     }
 
-    void Shoot() 
+    void Shoot(Node root) 
     {
+        GD.Print(shootPoint);
         MissileProjectile proj = (MissileProjectile)Bullet.Instantiate();
-        // proj.
-        shootPoint.AddChild(proj);
+        root.AddChild(proj);
+        proj.Start(shootPoint.GlobalPosition, 0f, speed);
+
+        GD.Print(proj.GlobalPosition);
     }
 }
