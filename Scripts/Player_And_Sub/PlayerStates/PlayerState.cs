@@ -11,5 +11,5 @@ public abstract class PlayerState
 
     public abstract void Exit(PlayerStateManager stateMgr);
 
-    public abstract void Input(PlayerStateManager stateMgr, string eventName);
+    public abstract void Input(PlayerStateManager stateMgr, InputEvent @event);
 }

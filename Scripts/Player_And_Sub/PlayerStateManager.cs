@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public partial class PlayerStateManager : CharacterBody2D
 {
@@ -35,11 +36,18 @@ public partial class PlayerStateManager : CharacterBody2D
 
     public override void _Input(InputEvent @event) 
 	{
-        currentState.Input(this, @event.AsText());
+        currentState.Input(this, @event);
 
-        if(Input.IsActionJustPressed("Jump") && this.IsOnFloor())
+        if(Input.IsActionJustPressed("SwitchView"))
 		{
-
+            if (currentState == bodyState) 
+            {
+                SwitchState(submState);
+            } 
+            else if (currentState == submState) 
+            {
+                SwitchState(bodyState);
+            }
         }
     }
 

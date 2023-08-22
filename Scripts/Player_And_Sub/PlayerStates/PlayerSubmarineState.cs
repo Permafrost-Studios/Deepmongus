@@ -31,7 +31,7 @@ public class PlayerSubmarineState : PlayerState
 
     public override void Exit(PlayerStateManager stateMgr) {}
 
-    public override void Input(PlayerStateManager stateMgr, string eventName)
+    public override void Input(PlayerStateManager stateMgr, InputEvent @event)
     {
         
     }

@@ -40,7 +40,6 @@ public partial class PlayerController : CharacterBody2D
 		if (isJumping) 
 		{
 			// newVel.Y = -jumpSpeed;
-			GD.Print("Is Jumping");
 			remainingJumpTime -= (float)delta;
 
 			if (remainingJumpTime <= 0) 

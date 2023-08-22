@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cguhp2yod4aif"]
 
-[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="1_77fcw"]
+[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerStateManager.cs" id="1_nkel7"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
 [ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="3_eesed"]
 
@@ -16,9 +16,11 @@ size = Vector2(32.3594, 23.5465)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(554, 436)
+scale = Vector2(1, 1.01345)
 collision_mask = 2
 slide_on_ceiling = false
-script = ExtResource("1_77fcw")
+platform_floor_layers = 4294901762
+script = ExtResource("1_nkel7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_ge1sa")
@@ -44,7 +46,7 @@ scale = Vector2(0.316333, -0.0469934)
 texture = ExtResource("3_eesed")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(283, 314)
+position = Vector2(283, 279)
 scale = Vector2(0.36679, 0.857903)
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_mgcw3")

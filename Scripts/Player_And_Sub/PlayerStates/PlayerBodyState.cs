@@ -4,7 +4,7 @@ using System;
 public class PlayerBodyState : PlayerState 
 {
     float moveSpeed = 300f;
-	float jumpSpeed = 500f;
+	float jumpSpeed = 700f;
 	float jumpTime = 0.1f;
     float remainingJumpTime;
 
@@ -12,6 +12,7 @@ public class PlayerBodyState : PlayerState
 
 	bool facingRight = false; //Make sure he is facing right by default
 
+    float GravityMultiplier = 2f;
     float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
     Vector2 newVel;
@@ -41,7 +42,6 @@ public class PlayerBodyState : PlayerState
 		if (isJumping) 
 		{
 			// newVel.Y = -jumpSpeed;
-			GD.Print("Is Jumping");
 			remainingJumpTime -= (float)delta;
 
 			if (remainingJumpTime <= 0) 
@@ -54,23 +54,28 @@ public class PlayerBodyState : PlayerState
 			{
 				isJumping = false;
 
+                newVel.Y = 0;
+
 				GD.Print("stopped jumping");
 			}
 		}
 		else 
 		{
-			newVel.Y += Gravity * (float)delta;
+			newVel.Y += Gravity * GravityMultiplier * (float)delta;
 		}
 
 		stateMgr.Velocity = newVel;
 		stateMgr.MoveAndSlide();
     }
 
-    public override void Exit(PlayerStateManager stateMgr) {}
-
-    public override void Input(PlayerStateManager stateMgr, string eventName)
+    public override void Exit(PlayerStateManager stateMgr) 
     {
-        if(eventName == "Jump" && stateMgr.IsOnFloor())
+        newVel = new Vector2();
+    }
+
+    public override void Input(PlayerStateManager stateMgr, InputEvent @event)
+    {
+        if(@event.IsAction("Jump") && stateMgr.IsOnFloor())
 		{
             InitiateJump();
 		}
@@ -78,7 +83,6 @@ public class PlayerBodyState : PlayerState
 
     void InitiateJump() 
     {
-        GD.Print("Jump");
         isJumping = true;
         remainingJumpTime = jumpTime;
         newVel.Y = -jumpSpeed; //Positive direction is downwards
