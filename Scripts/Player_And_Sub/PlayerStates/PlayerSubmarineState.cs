@@ -10,6 +10,9 @@ public class PlayerSubmarineState : PlayerState
 
     float fuelDepletionRate;
 
+    Node shootPoint; // Use get child or something
+    PackedScene Bullet = (PackedScene)GD.Load("res://bullet.tscn");
+
     public override void Enter(PlayerStateManager stateMgr) {}
     
     public override void Update(PlayerStateManager stateMgr, double delta)
@@ -31,5 +34,12 @@ public class PlayerSubmarineState : PlayerState
     public override void Input(PlayerStateManager stateMgr, string eventName)
     {
         
+    }
+
+    void Shoot() 
+    {
+        MissileProjectile proj = (MissileProjectile)Bullet.Instantiate();
+        // proj.
+        shootPoint.AddChild(proj);
     }
 }
