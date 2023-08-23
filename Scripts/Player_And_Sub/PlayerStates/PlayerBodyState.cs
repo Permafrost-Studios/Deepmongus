@@ -19,11 +19,15 @@ public class PlayerBodyState : PlayerState
 
 	Sprite2D thisSprite;
 
+	Area2D playerInteractArea;
+
     public override void Enter(PlayerStateManager stateMgr) 
     {
         remainingJumpTime = jumpTime;
 
 		thisSprite = stateMgr.GetNode("./Sprite") as Sprite2D;
+
+		playerInteractArea = (Area2D)stateMgr.GetNode("InteractArea");
     }
 
     public override void Update(PlayerStateManager stateMgr, double delta) {}
