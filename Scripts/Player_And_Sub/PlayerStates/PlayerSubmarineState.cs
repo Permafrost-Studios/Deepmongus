@@ -3,8 +3,8 @@ using System;
 
 public class PlayerSubmarineState : PlayerState 
 {
-    //Add shooting behaviour
-    //Add superSpeed behaviour
+    //Polish shooting behaviour
+    //Add acceleration stuff
 
     float speed = 300f;
     float speedMultiplier = 1f;
