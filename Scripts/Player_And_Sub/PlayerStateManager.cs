@@ -12,7 +12,7 @@ public partial class PlayerStateManager : CharacterBody2D
 
     public PlayerState currentState;
 
-    float fuelDepletionRate;
+    public float fuelDepletionRate;
 
     public override void _Ready() 
     {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cguhp2yod4aif"]
+[gd_scene load_steps=8 format=3 uid="uid://cguhp2yod4aif"]
 
 [ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerStateManager.cs" id="1_nkel7"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
@@ -6,6 +6,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1sa"]
 size = Vector2(45.9, 61.2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nwhg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mgcw3"]
 
@@ -33,6 +35,14 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="Sprite" type="Sprite2D" parent="Player"]
 scale = Vector2(0.101157, 0.101995)
 texture = ExtResource("2_56r47")
+
+[node name="Sonar" type="Area2D" parent="Player"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sonar"]
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_5nwhg")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(554, 436)
