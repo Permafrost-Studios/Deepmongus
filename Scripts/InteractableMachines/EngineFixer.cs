@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BatterySwapper : Area2D
+public partial class EngineFixer : BaseMachine
 {
 
 }
