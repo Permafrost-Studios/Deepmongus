@@ -6,7 +6,8 @@ public class PlayerSubmarineState : PlayerState
     //Add shooting behaviour
     //Add superSpeed behaviour
 
-    float speed = 100f;
+    float speed = 300f;
+    float shootImpulse = 1200f;
 
     float fuelDepletionRate;
 
@@ -48,7 +49,7 @@ public class PlayerSubmarineState : PlayerState
         GD.Print(shootPoint);
         MissileProjectile proj = (MissileProjectile)Bullet.Instantiate();
         root.AddChild(proj);
-        proj.Start(shootPoint.GlobalPosition, 0f, speed);
+        proj.Start(shootPoint.GlobalPosition, 0f, shootImpulse);
 
         GD.Print(proj.GlobalPosition);
     }

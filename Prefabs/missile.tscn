@@ -3,14 +3,15 @@
 [ext_resource type="Script" path="res://Scripts/Player_And_Sub/MissileProjectile.cs" id="1_ekhgw"]
 [ext_resource type="Texture2D" uid="uid://c3kq01myr6h0k" path="res://Art/Prototype/pngtree-cartoon-missile-png-image_6118032.png" id="1_rr8mr"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xomvy"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pvgka"]
 
-[node name="Missile" type="CharacterBody2D"]
+[node name="Missile" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_ekhgw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_xomvy")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_rr8mr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pvgka")
