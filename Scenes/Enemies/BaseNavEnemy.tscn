@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2lh8pd6nllwf"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/BaseNavEnemy.cs" id="1_sj4vv"]
+[ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="2_leso2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l13e1"]
+radius = 42.0
+height = 234.0
+
+[node name="BaseNavEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav")]
+script = ExtResource("1_sj4vv")
+nav = NodePath("NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Werewolf" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_leso2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l13e1")

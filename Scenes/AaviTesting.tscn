@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciio8mgfhevj1"]
+[gd_scene load_steps=11 format=3 uid="uid://banf3j763y1it"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_77fcw"]
+[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="1_77fcw"]
 [ext_resource type="Script" path="res://Scenes/AaviTesting.cs" id="1_m0svj"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
 [ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="3_eesed"]
+[ext_resource type="Script" path="res://Scripts/Enemies/BaseNavEnemy.cs" id="5_robdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1sa"]
 size = Vector2(45.9, 61.2)
@@ -12,11 +13,22 @@ size = Vector2(45.9, 61.2)
 radius = 58.02
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjjmw"]
+size = Vector2(949, 78)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l13e1"]
+radius = 42.0
+height = 234.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_a3b0h"]
+vertices = PackedVector2Array(274, 520, 707, 566, 36, 623, 98, 530, -135, 235, 281, -174, 260, -48, 55, 392, 343, 101, 157, 375, 966, -29, 1156, 28, 1056, 385, 728, -131)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(3, 2, 4, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(10, 11, 12, 1), PackedInt32Array(8, 13, 10, 1, 0, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(281, -174, -135, 235, 36, 623, 707, 566, 1056, 385, 1156, 28, 966, -29, 728, -131, 343, 101, 260, -48), PackedVector2Array(55, 392, 98, 530, 274, 520, 157, 375)])
 
 [node name="JulianTesting" type="Node"]
 script = ExtResource("1_m0svj")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(584, 339)
 collision_mask = 2
 script = ExtResource("1_77fcw")
 
@@ -34,11 +46,53 @@ texture = ExtResource("2_56r47")
 shape = SubResource("CircleShape2D_sromt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(595, 348)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(36.5, 121)
 shape = SubResource("RectangleShape2D_vjjmw")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(35.5, 121.526)
 scale = Vector2(0.316333, -0.0469934)
 texture = ExtResource("3_eesed")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D"]
+position = Vector2(598, -126)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(36.5, 121)
+shape = SubResource("RectangleShape2D_vjjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(35.5, 121.526)
+scale = Vector2(0.316333, -0.0469934)
+texture = ExtResource("3_eesed")
+
+[node name="BaseEnemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("nav")]
+position = Vector2(200, 200)
+script = ExtResource("5_robdt")
+nav = NodePath("NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="BaseEnemy"]
+avoidance_enabled = true
+radius = 100.0
+time_horizon_obstacles = 1.0
+debug_enabled = true
+
+[node name="Werewolf" type="Sprite2D" parent="BaseEnemy"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_eesed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseEnemy"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l13e1")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_a3b0h")
+use_edge_connections = false
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(369, 209, 336, 47, 509, 117)
