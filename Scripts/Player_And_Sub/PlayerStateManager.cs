@@ -11,6 +11,7 @@ public partial class PlayerStateManager : CharacterBody2D
     PlayerBodyState bodyState = new PlayerBodyState();
 
     public PlayerState currentState;
+    public CharacterBody2D currentCharacterBody; //This will be changed in the enter functions of the actual states themselves
 
     public float fuelDepletionRate;
 

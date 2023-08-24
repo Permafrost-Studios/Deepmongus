@@ -4,20 +4,75 @@
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
 [ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="3_eesed"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1sa"]
-size = Vector2(45.9, 61.2)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5nwhg"]
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mgcw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjjmw"]
 size = Vector2(32.3594, 23.5465)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1sa"]
+size = Vector2(45.9, 61.2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nwhg"]
+
 [node name="JulianTesting" type="Node"]
 
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(554, 1109)
+scale = Vector2(6.8593, 2.85303)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_mgcw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+scale = Vector2(29.16, 3.44)
+shape = SubResource("RectangleShape2D_vjjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+scale = Vector2(0.316333, -0.0469934)
+texture = ExtResource("3_eesed")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-2045, 705)
+scale = Vector2(0.36679, 0.857903)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_mgcw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+scale = Vector2(29.16, 3.44)
+shape = SubResource("RectangleShape2D_vjjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+scale = Vector2(0.316333, -0.0469934)
+texture = ExtResource("3_eesed")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-1260, 780)
+scale = Vector2(0.36679, 0.857903)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_mgcw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+scale = Vector2(29.16, 3.44)
+shape = SubResource("RectangleShape2D_vjjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+scale = Vector2(0.316333, -0.0469934)
+texture = ExtResource("3_eesed")
+
+[node name="SubmarineBody" type="CharacterBody2D" parent="."]
+position = Vector2(613, 739)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SubmarineBody"]
+scale = Vector2(0.985046, 1.01657)
+polygon = PackedVector2Array(-350, -200, -350, 200, 350, 200, 350, -200, 300, -150, 300, 150, -300, 150, -300, -150, 300, -150, 350, -200)
+
+[node name="Texture" type="Sprite2D" parent="SubmarineBody"]
+scale = Vector2(0.23, 0.25)
+texture = ExtResource("3_eesed")
+
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(554, 436)
+position = Vector2(611, 735)
 scale = Vector2(1, 1.01345)
 collision_mask = 2
 slide_on_ceiling = false
@@ -41,52 +96,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sonar"]
-scale = Vector2(30, 30)
+scale = Vector2(50, 50)
 shape = SubResource("CircleShape2D_5nwhg")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(554, 436)
-collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_mgcw3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(38.2, 118.5)
-scale = Vector2(29.16, 3.44)
-shape = SubResource("RectangleShape2D_vjjmw")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(35.5, 121.526)
-scale = Vector2(0.316333, -0.0469934)
-texture = ExtResource("3_eesed")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(283, 279)
-scale = Vector2(0.36679, 0.857903)
-collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_mgcw3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(38.2, 118.5)
-scale = Vector2(29.16, 3.44)
-shape = SubResource("RectangleShape2D_vjjmw")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-position = Vector2(35.5, 121.526)
-scale = Vector2(0.316333, -0.0469934)
-texture = ExtResource("3_eesed")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(859, 221)
-scale = Vector2(0.36679, 0.857903)
-collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_mgcw3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(38.2, 118.5)
-scale = Vector2(29.16, 3.44)
-shape = SubResource("RectangleShape2D_vjjmw")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-position = Vector2(35.5, 121.526)
-scale = Vector2(0.316333, -0.0469934)
-texture = ExtResource("3_eesed")
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.411221, 1.33133)
