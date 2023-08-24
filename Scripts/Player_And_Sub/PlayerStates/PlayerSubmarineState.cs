@@ -20,11 +20,15 @@ public class PlayerSubmarineState : PlayerState
 
     public override void Enter(PlayerStateManager stateMgr) 
     {
+        stateMgr.cam.Zoom = new Vector2 (0.3f, 0.3f);
+
+        stateMgr.currentCharacterBody = stateMgr;
+
         resourceManager = ResourceManager.instance;
 
-        shootPoint = (Node2D)stateMgr.GetChild(0);
+        shootPoint = (Node2D)stateMgr.currentCharacterBody.GetNode("./ShootPoint");
 
-        sonarArea = (Area2D)stateMgr.GetChild(3);
+        sonarArea = (Area2D)stateMgr.currentCharacterBody.GetNode("./Sonar");
     }
     
     public override void Update(PlayerStateManager stateMgr, double delta)
@@ -47,9 +51,9 @@ public class PlayerSubmarineState : PlayerState
 
     public override void PhysicsUpdate(PlayerStateManager stateMgr, double delta)
     {
-        stateMgr.Velocity = (new Vector2(stateMgr.horizontalInput, -stateMgr.verticalInput) * speed * speedMultiplier).LimitLength(speed * speedMultiplier);
+        stateMgr.currentCharacterBody.Velocity = (new Vector2(stateMgr.horizontalInput, -stateMgr.verticalInput) * speed * speedMultiplier).LimitLength(speed * speedMultiplier);
 
-		stateMgr.MoveAndSlide();
+		stateMgr.currentCharacterBody.MoveAndSlide();
     }
 
     public override void Exit(PlayerStateManager stateMgr) {}
@@ -64,7 +68,7 @@ public class PlayerSubmarineState : PlayerState
 
         if(@event.IsAction("Jump")) //Depletes double fuel if the ship is going fast
         {
-            stateMgr.DepleteFuel(stateMgr.fuelDepletionRate);
+            stateMgr.DepleteFuel(stateMgr.fuelDepletionRate * 2);
 
             speedMultiplier = 2f;
         }

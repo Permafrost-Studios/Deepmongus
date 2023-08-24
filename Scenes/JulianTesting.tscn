@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cguhp2yod4aif"]
+[gd_scene load_steps=13 format=3 uid="uid://cguhp2yod4aif"]
 
 [ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerStateManager.cs" id="1_nkel7"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
 [ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="3_eesed"]
+[ext_resource type="Texture2D" uid="uid://b717t5xflefnn" path="res://Art/Prototype/Untitled+design+-+2020-06-11T150553.962.png" id="3_sl4jc"]
+[ext_resource type="Texture2D" uid="uid://cmbpssic3e1uw" path="res://Art/Prototype/81vkBx8K35L.jpg" id="5_8po07"]
+[ext_resource type="Script" path="res://Scripts/InteractableMachines/ModeSwap.cs" id="5_nyyt5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mgcw3"]
 
@@ -12,7 +15,11 @@ size = Vector2(32.3594, 23.5465)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1sa"]
 size = Vector2(45.9, 61.2)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_av7va"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5nwhg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxjct"]
 
 [node name="JulianTesting" type="Node"]
 
@@ -60,44 +67,83 @@ texture = ExtResource("3_eesed")
 
 [node name="SubmarineBody" type="CharacterBody2D" parent="."]
 position = Vector2(613, 739)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SubmarineBody"]
-scale = Vector2(0.985046, 1.01657)
-polygon = PackedVector2Array(-350, -200, -350, 200, 350, 200, 350, -200, 300, -150, 300, 150, -300, 150, -300, -150, 300, -150, 350, -200)
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_nkel7")
 
 [node name="Texture" type="Sprite2D" parent="SubmarineBody"]
 scale = Vector2(0.23, 0.25)
 texture = ExtResource("3_eesed")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(611, 735)
+[node name="LeftFloor" type="Sprite2D" parent="SubmarineBody"]
+position = Vector2(-194, 15)
+scale = Vector2(0.35, 0.09)
+texture = ExtResource("3_sl4jc")
+
+[node name="LeftFloor2" type="Sprite2D" parent="SubmarineBody"]
+position = Vector2(194, 15)
+scale = Vector2(0.35, 0.09)
+texture = ExtResource("3_sl4jc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SubmarineBody"]
+scale = Vector2(0.985046, 1.01657)
+polygon = PackedVector2Array(-350, -200, -350, 200, 350, 200, 350, -200, 300, -150, 300.494, -5.90222, 63.9564, -5.90222, 62.9412, 34.4295, 299.478, 34.4295, 300, 150, -300, 150, -299.478, 37.3806, -63.9564, 37.3806, -63.9564, -7.86957, -299.478, -7.86957, -300, -150, 300, -150, 350, -200)
+
+[node name="PlayerBody" type="CharacterBody2D" parent="SubmarineBody"]
+position = Vector2(-2, -4)
 scale = Vector2(1, 1.01345)
 collision_mask = 2
 slide_on_ceiling = false
 platform_floor_layers = 4294901762
-script = ExtResource("1_nkel7")
 
-[node name="ShootPoint" type="Node2D" parent="Player"]
-position = Vector2(29, -27.6284)
-scale = Vector2(-1.59128, 1921.26)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubmarineBody/PlayerBody"]
 shape = SubResource("RectangleShape2D_ge1sa")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Sprite" type="Sprite2D" parent="Player"]
+[node name="Sprite" type="Sprite2D" parent="SubmarineBody/PlayerBody"]
 scale = Vector2(0.101157, 0.101995)
 texture = ExtResource("2_56r47")
 
-[node name="Sonar" type="Area2D" parent="Player"]
+[node name="InteractArea" type="Area2D" parent="SubmarineBody/PlayerBody"]
+scale = Vector2(1, 0.986728)
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubmarineBody/PlayerBody/InteractArea"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_av7va")
+
+[node name="Sonar" type="Area2D" parent="SubmarineBody"]
+position = Vector2(-2, -4)
+scale = Vector2(1, 1.01345)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sonar"]
-scale = Vector2(50, 50)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubmarineBody/Sonar"]
+scale = Vector2(200, 200)
 shape = SubResource("CircleShape2D_5nwhg")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(0.411221, 1.33133)
+[node name="Camera2D" type="Camera2D" parent="SubmarineBody"]
+position = Vector2(-2, -4)
+scale = Vector2(0.411221, 1.34924)
+
+[node name="Machines" type="Node2D" parent="SubmarineBody"]
+
+[node name="Helm" type="Area2D" parent="SubmarineBody/Machines"]
+position = Vector2(-274, -27)
+collision_layer = 8192
+collision_mask = 0
+script = ExtResource("5_nyyt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubmarineBody/Machines/Helm"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_qxjct")
+
+[node name="Sprite2D" type="Sprite2D" parent="SubmarineBody/Machines/Helm"]
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("5_8po07")
+
+[node name="ShootPoint" type="Node2D" parent="SubmarineBody"]
+position = Vector2(367, -116)
+rotation = 3.14159
+scale = Vector2(1.59128, -1947.1)

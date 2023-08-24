@@ -7,16 +7,18 @@ public partial class PlayerStateManager : CharacterBody2D
     public float horizontalInput;
     public float verticalInput;
 
-    PlayerSubmarineState submState = new PlayerSubmarineState();
-    PlayerBodyState bodyState = new PlayerBodyState();
+    public PlayerSubmarineState submState = new PlayerSubmarineState();
+    public PlayerBodyState bodyState = new PlayerBodyState();
 
     public PlayerState currentState;
     public CharacterBody2D currentCharacterBody; //This will be changed in the enter functions of the actual states themselves
+    public Camera2D cam;
 
     public float fuelDepletionRate;
 
     public override void _Ready() 
     {
+        cam = (Camera2D)GetNode("./Camera2D");
         currentState = submState;
         currentState.Enter(this);
     }
