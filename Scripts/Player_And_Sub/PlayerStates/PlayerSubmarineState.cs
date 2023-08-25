@@ -26,7 +26,7 @@ public class PlayerSubmarineState : PlayerState
 
         resourceManager = ResourceManager.instance;
 
-        shootPoint = (Node2D)stateMgr.currentCharacterBody.GetNode("./ShootPoint");
+        shootPoint = (Node2D)stateMgr.currentCharacterBody.GetNode("./Turret/ShootPoint");
 
         sonarArea = (Area2D)stateMgr.currentCharacterBody.GetNode("./Sonar");
     }

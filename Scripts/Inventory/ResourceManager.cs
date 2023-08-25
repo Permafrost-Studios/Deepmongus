@@ -3,9 +3,9 @@ using System;
 
 public partial class ResourceManager : NodeSingleton<ResourceManager> {
 
-	int fuelCans;
-	int torpedoes;
-	int batteries;
+	public int fuelCans;
+	public int torpedoes;
+	public int batteries;
 
 	public void UpdateResource(Area2D node) {
 

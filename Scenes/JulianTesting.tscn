@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cguhp2yod4aif"]
+[gd_scene load_steps=14 format=3 uid="uid://cguhp2yod4aif"]
 
 [ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerStateManager.cs" id="1_nkel7"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b717t5xflefnn" path="res://Art/Prototype/Untitled+design+-+2020-06-11T150553.962.png" id="3_sl4jc"]
 [ext_resource type="Texture2D" uid="uid://cmbpssic3e1uw" path="res://Art/Prototype/81vkBx8K35L.jpg" id="5_8po07"]
 [ext_resource type="Script" path="res://Scripts/InteractableMachines/ModeSwap.cs" id="5_nyyt5"]
+[ext_resource type="Script" path="res://Scripts/Turret.cs" id="7_ck2t4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mgcw3"]
 
@@ -143,7 +144,14 @@ shape = SubResource("CircleShape2D_qxjct")
 scale = Vector2(0.015, 0.015)
 texture = ExtResource("5_8po07")
 
-[node name="ShootPoint" type="Node2D" parent="SubmarineBody"]
-position = Vector2(367, -116)
+[node name="Turret" type="Sprite2D" parent="SubmarineBody"]
+position = Vector2(-2, -4)
+scale = Vector2(0.2, 0.1)
+texture = ExtResource("3_sl4jc")
+offset = Vector2(295, 0)
+script = ExtResource("7_ck2t4")
+
+[node name="ShootPoint" type="Node2D" parent="SubmarineBody/Turret"]
+position = Vector2(621.84, 0)
 rotation = 3.14159
-scale = Vector2(1.59128, -1947.1)
+scale = Vector2(7.9564, -19471)

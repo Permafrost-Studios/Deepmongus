@@ -4,14 +4,14 @@ using System;
 public partial class SubResourceManager : NodeSingleton<SubResourceManager> 
 {
     float maxFuel;
-    float currentFuel;
+    public float currentFuel;
     float fuelDrainRate; // In seconds
 
     float maxCharge; //Like electric charge which is recharged through batteries
-    float currentCharge;
+    public float currentCharge;
 
     int maxMissiles;
-    int currentMissiles; //These are missiles that are LOADED and ready to fire - not spare supplies
+    public int currentMissiles; //These are missiles that are LOADED and ready to fire - not spare supplies
 
     public override void _Process(double delta)
 	{
@@ -33,11 +33,6 @@ public partial class SubResourceManager : NodeSingleton<SubResourceManager>
     public void AddCharge(float amt) //This will be called with a negative value to remove charge from the machine usage
     {
         currentCharge += amt;
-
-        if (currentCharge <= 0)
-        {
-            Die();
-        }
         
         currentCharge = Math.Clamp(currentCharge, -1, maxCharge);
     }
