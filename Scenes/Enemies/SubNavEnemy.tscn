@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2lh8pd6nllwf"]
+[gd_scene load_steps=4 format=3 uid="uid://d1ofuvqx2ynyg"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/BaseNavEnemy.cs" id="1_sj4vv"]
 [ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="2_leso2"]

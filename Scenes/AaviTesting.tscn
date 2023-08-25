@@ -31,6 +31,9 @@ script = ExtResource("1_m0svj")
 position = Vector2(584, 339)
 collision_mask = 2
 script = ExtResource("1_77fcw")
+moveSpeed = null
+jumpSpeed = null
+jumpTime = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_ge1sa")
@@ -71,10 +74,12 @@ position = Vector2(35.5, 121.526)
 scale = Vector2(0.316333, -0.0469934)
 texture = ExtResource("3_eesed")
 
-[node name="BaseEnemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("nav")]
+[node name="BaseEnemy" type="CharacterBody2D" parent="."]
 position = Vector2(200, 200)
 script = ExtResource("5_robdt")
-nav = NodePath("NavigationAgent2D")
+moveSpd = null
+nav = Object(NavigationAgent2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","target_position":Vector2(0, 0),"path_desired_distance":20.0,"target_desired_distance":10.0,"path_max_distance":100.0,"navigation_layers":1,"pathfinding_algorithm":0,"path_postprocessing":0,"path_metadata_flags":7,"avoidance_enabled":true,"velocity":Vector2(0, 0),"radius":100.0,"neighbor_distance":500.0,"max_neighbors":10,"time_horizon_agents":1.0,"time_horizon_obstacles":1.0,"max_speed":100.0,"avoidance_layers":1,"avoidance_mask":1,"avoidance_priority":1.0,"debug_enabled":true,"debug_use_custom":false,"debug_path_custom_color":Color(1, 1, 1, 1),"debug_path_custom_point_size":4.0,"debug_path_custom_line_width":-1.0,"script":null)
+
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="BaseEnemy"]
 avoidance_enabled = true
