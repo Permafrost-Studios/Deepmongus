@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://banf3j763y1it"]
+[gd_scene load_steps=10 format=3 uid="uid://banf3j763y1it"]
 
 [ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="1_77fcw"]
-[ext_resource type="Script" path="res://Scenes/AaviTesting.cs" id="1_m0svj"]
 [ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_56r47"]
 [ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="3_eesed"]
 [ext_resource type="Script" path="res://Scripts/Enemies/BaseNavEnemy.cs" id="5_robdt"]
@@ -25,7 +24,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(281, -174, -135, 235, 36, 623, 707, 566, 1056, 385, 1156, 28, 966, -29, 728, -131, 343, 101, 260, -48), PackedVector2Array(55, 392, 98, 530, 274, 520, 157, 375)])
 
 [node name="JulianTesting" type="Node"]
-script = ExtResource("1_m0svj")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(584, 339)

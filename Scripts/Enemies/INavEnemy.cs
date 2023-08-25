@@ -8,26 +8,19 @@ public interface INavEnemy {
 	public NavigationAgent2D? navAgt {get; set;}
 	public float moveSpd {get; set;}
 	public NavTargetType? navTgtTyp {get;}
-	public NavTargetUnion? navTgt {get;}
+	public System.Object? navTgt {get;}
 	public bool isNavigating {get;}
 
 
 	/** 										INTERFACE FUNCTIONS																**/
-	public void StartNavigating(NavTargetType typ, NavTargetUnion uin);
+	public void StartNavigating(NavTargetType typ, System.Object uin);
 	public void EndNavigating();
 
 
 
 	/** 										INTERFACE 	TYPES																	**/
 	public enum NavTargetType {
-		followGPos,
-		followNd
-	}
-	[StructLayout(LayoutKind.Explicit)]
-	struct NavTargetUnion{
-    [FieldOffset(0)]
-    public Vector2 followGPos;
-    [FieldOffset(0)]
-    public Node2D followNd;
+		kGlobalVec2,
+		kNode2D
 	}
 }

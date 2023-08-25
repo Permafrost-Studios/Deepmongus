@@ -1,26 +1,19 @@
 using Godot;
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 public partial class BaseNavEnemy : CharacterBody2D, INavEnemy {
+	NavigationAgent2D? _navAgt;
 	[Export] public NavigationAgent2D? navAgt {get; set;}
 	[Export] public float moveSpd {get; set;} = 500f;
 	public INavEnemy.NavTargetType? navTgtTyp {get; set;} = new INavEnemy.NavTargetType();
-	public INavEnemy.NavTargetUnion? navTgt {get; private set;} = new INavEnemy.NavTargetUnion();
+	public System.Object? navTgt {get; private set;}
   [Export] public bool isNavigating {get; private set;} = false;
 
-	void INavEnemy.StartNavigating(INavEnemy.NavTargetType typ, INavEnemy.NavTargetUnion uin) {
+	void INavEnemy.StartNavigating(INavEnemy.NavTargetType typ, System.Object tgt) {
 		isNavigating = true;
 		navTgtTyp = typ;
-		switch (typ) {
-			case INavEnemy.NavTargetType.followNd:
-				navTgt = navTgt!.Value with { followNd = uin.followNd };
-				break;
-			case INavEnemy.NavTargetType.followGPos:
-				navTgt = navTgt!.Value with { followGPos = uin.followGPos };
-				break;
-		}
+		navTgt = tgt;
   }
 
   void INavEnemy.EndNavigating() {
@@ -61,11 +54,11 @@ public partial class BaseNavEnemy : CharacterBody2D, INavEnemy {
 			GD.Print("printin");
 			Vector2 _newpos;
 			switch (navTgtTyp) {
-				case INavEnemy.NavTargetType.followNd:
-					_newpos = navTgt!.Value.followNd.GlobalPosition;
+				case INavEnemy.NavTargetType.kNode2D:
+					_newpos = (navTgt as Node2D)!.GlobalPosition;
 					break;
-				case INavEnemy.NavTargetType.followGPos:
-					_newpos = navTgt!.Value.followGPos;
+				case INavEnemy.NavTargetType.kGlobalVec2:
+					_newpos = (navTgt as Godot.Vector2?)!.Value;
 					break;
 				default:
 					_newpos = this.GlobalPosition;
