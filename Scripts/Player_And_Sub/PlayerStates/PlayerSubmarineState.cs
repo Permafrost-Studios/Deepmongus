@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 public class PlayerSubmarineState : PlayerState 
 {
     //Polish shooting behaviour
@@ -84,7 +85,8 @@ public class PlayerSubmarineState : PlayerState
         GD.Print(shootPoint);
         MissileProjectile proj = (MissileProjectile)Bullet.Instantiate();
         root.AddChild(proj);
-        proj.Start(shootPoint.GlobalPosition, 0f, shootImpulse);
+        // proj.Start(shootPoint.GlobalPosition, 0f, shootImpulse);
+        proj.Start(shootPoint.GlobalPosition, 0f, (new Vector2(shootImpulse, 0).Rotated((shootPoint.GetParent() as Sprite2D).Rotation)));
 
         GD.Print(proj.GlobalPosition);
     }

@@ -8,10 +8,17 @@ public partial class MissileProjectile : RigidBody2D
         // this.MoveAndCollide(this.Velocity);
     }
 
-    public void Start(Vector2 position, float direction, float impulse)
+    // public void Start(Vector2 position, float direction, float impulse)
+    // {
+    //     this.Rotation = direction;
+    //     this.GlobalPosition = position;
+    //     this.ApplyCentralImpulse(new Vector2(impulse, 0).Rotated(this.Rotation));
+    // }
+
+    public void Start(Vector2 position, float direction, Vector2 impulse)
     {
         this.Rotation = direction;
         this.GlobalPosition = position;
-        this.ApplyCentralImpulse(new Vector2(impulse, 0).Rotated(this.Rotation));
+        this.ApplyCentralImpulse(impulse);
     }
 }
