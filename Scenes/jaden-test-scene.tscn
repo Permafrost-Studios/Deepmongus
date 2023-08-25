@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfljs4ha7g1gt"]
+
+[ext_resource type="Script" path="res://Scripts/Player_And_Sub/PlayerController.cs" id="1_t016q"]
+[ext_resource type="Texture2D" uid="uid://cr200ewnr267c" path="res://Art/Prototype/istockphoto-505411568-612x612.jpg" id="2_llxpj"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ResourcePickup.cs" id="3_oxol6"]
+[ext_resource type="Script" path="res://Scripts/Inventory/SubResource.cs" id="4_dnkyk"]
+[ext_resource type="Texture2D" uid="uid://b0i8migs1841w" path="res://Art/Prototype/werewolf.jpg" id="5_dihuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvrmu"]
+size = Vector2(45.9, 61.2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mc823"]
+radius = 58.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jdb7"]
+radius = 58.4637
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8qir"]
+size = Vector2(36, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guftu"]
+size = Vector2(1308, 390)
+
+[node name="Root" type="Node"]
+
+[node name="SceneManager" type="Node" parent="."]
+
+[node name="CurrentScene" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CurrentScene"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="CurrentScene"]
+script = ExtResource("1_t016q")
+
+[node name="ShootPoint" type="Node2D" parent="CurrentScene/CharacterBody2D"]
+position = Vector2(29, -27.6284)
+rotation = 3.14159
+scale = Vector2(1.59128, -1921.26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_wvrmu")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite" type="Sprite2D" parent="CurrentScene/CharacterBody2D"]
+scale = Vector2(0.101157, 0.101995)
+texture = ExtResource("2_llxpj")
+
+[node name="Pickup Area" type="Area2D" parent="CurrentScene/CharacterBody2D"]
+collision_mask = 8
+script = ExtResource("3_oxol6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/CharacterBody2D/Pickup Area"]
+shape = SubResource("CircleShape2D_mc823")
+
+[node name="InteractArea" type="Area2D" parent="CurrentScene/CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/CharacterBody2D/InteractArea"]
+shape = SubResource("CircleShape2D_4jdb7")
+
+[node name="Pickup" type="Area2D" parent="CurrentScene"]
+position = Vector2(118, 37)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("4_dnkyk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CurrentScene/Pickup"]
+scale = Vector2(0.0119048, 0.0119048)
+texture = ExtResource("5_dihuc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/Pickup"]
+shape = SubResource("RectangleShape2D_m8qir")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CurrentScene"]
+position = Vector2(-4, 282)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScene/StaticBody2D"]
+shape = SubResource("RectangleShape2D_guftu")
+
+[node name="Sprite2D" type="Sprite2D" parent="CurrentScene/StaticBody2D"]
+scale = Vector2(0.435333, 0.229762)
+texture = ExtResource("5_dihuc")

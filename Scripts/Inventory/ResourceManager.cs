@@ -9,50 +9,26 @@ public partial class ResourceManager : NodeSingleton<ResourceManager> {
 
 	public void UpdateResource(Area2D node) {
 
-		GD.Print(fuelCans);
-		GD.Print(torpedoes);
-		GD.Print(batteries);
-
 		switch( (node as SubResource).type ) {
 
 			case 0:
 
-				if ( fuelCans < 2 ) {
-
-					fuelCans++;
-					node.QueueFree();
-
-				}
-
+				if ( fuelCans < 2 ) { fuelCans++; }
 				break;
 
 			case 1:
 
-				if ( torpedoes < 4 ) {
-
-					torpedoes++;
-					node.QueueFree();
-
-				}
-
+				if ( torpedoes < 4 ) { torpedoes++; }
 				break;
 
 			case 2:
 
-				if ( batteries < 2 ) {
-
-					batteries++;
-					node.QueueFree();
-					
-				}            
-
+				if ( batteries < 2 ) { batteries++; }            
 				break;
 
 		}
 
-		GD.Print(fuelCans);
-		GD.Print(torpedoes);
-		GD.Print(batteries);
+		node.QueueFree();
 
 	}
 
